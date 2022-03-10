@@ -41,10 +41,21 @@ board class
 
 game class
     board, 2 players
+    each individual game is played within a game object. game functionality must exist within game class
     __init__:
         creates board object for game
     
-    each individual game is played within a game object. game functionality must exist within game class
+    game_driver
+        while no winner:
+            print board
+            p1 moves
+            p2 moves
+        
+        when someone wins
+        call .win() and .lost() for respective players
+        
+        exit driver
+    
 
         
         

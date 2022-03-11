@@ -3,9 +3,9 @@ from player import player
 import random
 
 #this function checks than an input is either 1,2, or 3 and an integer
-def check_in(input):
+def check_in(input, lower, upper):
         try:
-            if int(input) > 0 and int(input) < 4:
+            if int(input) > lower and int(input) < upper:
                 return True
             return False
         except:
@@ -36,12 +36,12 @@ class game:
                 row_in = input("Enter the row in which you'd like to make your move: ")
                 #print(type(row_in))
                 #repeatedly asks for input until valid input given
-                while not check_in(row_in):
+                while not check_in(row_in,0,4):
                     row_in = input("Invalid input. Please re-enter either 1, 2, or 3: ")
 
                 colm_in = input("Enter the column in which you'd like to make your move: ")
                 #repeating for column
-                while not check_in(colm_in):
+                while not check_in(colm_in,0,4):
                     colm_in = input("Invalid input. Please re-enter either 1, 2, or 3: ")
                 
                 a += 1
@@ -58,12 +58,12 @@ class game:
                 row_in = input("Enter the row in which you'd like to make your move: ")
                 #print(type(row_in))
                 #repeatedly asks for input until valid input given
-                while not check_in(row_in):
+                while not check_in(row_in,0,4):
                     row_in = input("Invalid input. Please re-enter either 1, 2, or 3: ")
 
                 colm_in = input("Enter the column in which you'd like to make your move: ")
                 #repeating for column
-                while not check_in(colm_in):
+                while not check_in(colm_in,0,4):
                     colm_in = input("Invalid input. Please re-enter either 1, 2, or 3: ")
                 
                 a += 1

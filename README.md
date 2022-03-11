@@ -2,6 +2,7 @@ Python Practice Project:
 Tic Tak Toe
 
 Focus: objects and classes
+Make a match history?
 pseudo:
 
 player class

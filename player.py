@@ -15,4 +15,7 @@ class player:
     def lost(self):
         self.total_games += 1
     def winrate(self):
-        print(self.name + "'s winrate: " + str(self.wins / self.total_games * 100) +"%")
+        if self.total_games == 0:
+            return "0 games played."
+        else:
+            return str(self.wins / self.total_games * 100)

@@ -76,9 +76,29 @@ class game:
         while GO:
             self.board.print_board()
             self.turn(rand)
+            if self.board.check_win():
+                #most recent play won
+                if rand:
+                    #rand == true means p1 won
+                    self.p1.won()
+                    self.p2.lost()
+                else:
+                    self.p2.won()
+                    self.p1.lost()
+                return
             rand = not rand
             self.board.print_board()
             self.turn(rand)
+            if self.board.check_win():
+                #most recent play won
+                if rand:
+                    #rand == true means p1 won
+                    self.p1.won()
+                    self.p2.lost()
+                else:
+                    self.p2.won()
+                    self.p1.lost()
+                return
             rand = not rand
 
     

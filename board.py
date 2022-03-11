@@ -13,7 +13,7 @@ class board:
     def print_board(self):
         i = 0
         n = 0
-        print("--Current board--")
+        print("\n--Current board--")
         while i < 3:
             while n < 3:
                 print("  " + self.game_board[i][n] + "  ", end = "")
@@ -31,7 +31,6 @@ class board:
         column -= 1
         #checks the targeted row,column is in range and not already changed
         if self.game_board[row][column] != "-" or 0 > row or 0 > column or row > 2 or column >2:
-            print("Cannot play there!")
             return False
         else:
             self.game_board[row][column] = player.symbol 

@@ -1,11 +1,86 @@
 from board import board
 from player import player
+import random
+
+#this function checks than an input is either 1,2, or 3 and an integer
+def check_in(input):
+        try:
+            if int(input) > 0 and int(input) < 4:
+                return True
+            return False
+        except:
+            return False
 
 class game:
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
         self.board = board()
+
     def print_menu(self):
-        
+        print("placeholder")  
+
+    def turn(self, rand):
+        row_in = 0
+        colm_in = 0
+        #p1 first
+        if rand:
+            print("It's " + self.p1.name + "'s turn!")
+            #attempt counter
+            a = 0
+            #while move doesnt return true. when exits while, move has been made
+            while not self.board.move(self.p1, int(row_in), int(colm_in)):
+                if a > 0:
+                    print("Cannot play there! Try again.")
+                
+                row_in = input("Enter the row in which you'd like to make your move: ")
+                #print(type(row_in))
+                #repeatedly asks for input until valid input given
+                while not check_in(row_in):
+                    row_in = input("Invalid input. Please re-enter either 1, 2, or 3: ")
+
+                colm_in = input("Enter the column in which you'd like to make your move: ")
+                #repeating for column
+                while not check_in(colm_in):
+                    colm_in = input("Invalid input. Please re-enter either 1, 2, or 3: ")
+                
+                a += 1
+        #p2 first
+        else:
+            print("It's " + self.p2.name + "'s turn!")
+            #attempt counter
+            a = 0
+            #while move doesnt return true. when exits while, move has been made
+            while not self.board.move(self.p2, int(row_in), int(colm_in)):
+                if a > 0:
+                    print("Cannot play there! Try again.")
+                
+                row_in = input("Enter the row in which you'd like to make your move: ")
+                #print(type(row_in))
+                #repeatedly asks for input until valid input given
+                while not check_in(row_in):
+                    row_in = input("Invalid input. Please re-enter either 1, 2, or 3: ")
+
+                colm_in = input("Enter the column in which you'd like to make your move: ")
+                #repeating for column
+                while not check_in(colm_in):
+                    colm_in = input("Invalid input. Please re-enter either 1, 2, or 3: ")
+                
+                a += 1
+
     def game_driver(self):
+        GO = True
+        random.seed()
+        rand = random.choice([True,False])
+        print(rand)
+        while GO:
+            self.board.print_board()
+            self.turn(rand)
+            rand = not rand
+            self.board.print_board()
+            self.turn(rand)
+            rand = not rand
+
+    
+            
+            

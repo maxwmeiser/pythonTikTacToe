@@ -1,11 +1,12 @@
-import profile
-from symtable import Symbol
-from venv import create
 from board import board
 from player import player
 from game import game
 from game import check_in
 import random
+
+#TODO:
+#DRAW logic
+#rework winrates into Wins-Losses-Draws
 
 #prints menu
 def print_menu():
@@ -13,8 +14,8 @@ def print_menu():
     print("1. Play a game")
     print("2. Add new player profile")
     print("3. View player profiles")
-    print("4. Game Tutorial")
-    print("5. Quit")
+    #print("4. Game Tutorial")
+    print("4. Quit")
 
 #this function creates player profiles
 def create_player(player_profile_count, player_profiles):
@@ -47,9 +48,9 @@ def list_players(profile_count,profiles, winrate_flag):
     i = 0
     print("\n----Player Profiles----")
     while profile_count > i:
-        print(str(i) + ") Name: " + profiles[i].name + " |Symbol: " + profiles[i].symbol, end="")
+        print(str(i) + ") Name: " + profiles[i].name + " | Symbol: " + profiles[i].symbol, end="")
         if winrate_flag:
-            print(" |Winrate: " + profiles[i].winrate())
+            print(" | Winrate: " + profiles[i].winrate())
         else:
             print("\n")   
         i += 1 
@@ -60,23 +61,44 @@ player_profiles = []
 
 print("----Tic Tak Toe----")
 
-   
+#creating 2 profiles
+print("Please create two player profiles to continue...")
+player_profile_count += create_player(player_profile_count,player_profiles)
+player_profile_count += create_player(player_profile_count,player_profiles)
 
-#TODO:
-#create new_player function (make dictionary key all lowercase)
-#call function twice before PLAY to initiate game
-#complete the rest of the menu
-#when selecting players for a game present a list of player profiles
-
-# while PLAY:
-#     print_menu()
-#     menu_choice = input("#>")
-#     while not check_in(menu_choice,0,5):
-#         menu_choice = input("Invalid input. Try again\n#>")
-#     match(int(menu_choice)):
-#         case 1:
-#             #Play a game
-            
-#         case _:
-#             #default
-#             print("Invalid Input. Please redo")
+#start menu loop
+while PLAY:
+    print_menu()
+    menu_choice = input("#> ")
+    while not check_in(menu_choice,0,4):
+        menu_choice = input("Invalid input. Try again\n#> ")
+    match(int(menu_choice)):
+        case 1:
+            #Play a game
+            list_players(player_profile_count,player_profiles,False)
+            print("Please select two players for the game\n")
+            firstplayer = input("Player 1 \n#> ")
+            while not check_in(firstplayer, -1, player_profile_count):
+                print("Invalid player! Please input a number between 0 and " + str(player_profile_count - 1))
+                firstplayer = input("#> ")
+            secondplayer = input("Player 2 \n#> ")
+            while not check_in(secondplayer, -1, player_profile_count) or secondplayer == firstplayer:
+                print("Invalid player! Please input a unique number between 0 and " + str(player_profile_count - 1))
+                secondplayer = input("#> ")
+            game_instance = game(player_profiles[int(firstplayer)],player_profiles[int(secondplayer)])
+            game_instance.game_driver()
+        case 2:
+            #Add new player profile
+            player_profile_count += create_player(player_profile_count, player_profiles)
+        case 3:
+            #View profiles
+            list_players(player_profile_count, player_profiles, True)
+        case 4:
+            #quitting
+            PLAY = False
+            print("Thanks for playing! Here are the stats:")
+            list_players(player_profile_count, player_profiles, True)
+            print("Goodbye!")
+        case _:
+            #default
+            print("Invalid Input.")   

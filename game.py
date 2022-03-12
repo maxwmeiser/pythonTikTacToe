@@ -80,9 +80,13 @@ class game:
                 #most recent play won
                 if rand:
                     #rand == true means p1 won
+                    self.board.print_board()
+                    print(self.p1.name + " won!")
                     self.p1.won()
                     self.p2.lost()
                 else:
+                    self.board.print_board()
+                    print(self.p2.name + " won!")
                     self.p2.won()
                     self.p1.lost()
                 return
@@ -93,9 +97,13 @@ class game:
                 #most recent play won
                 if rand:
                     #rand == true means p1 won
+                    self.board.print_board()
+                    print(self.p1.name + " won!")
                     self.p1.won()
                     self.p2.lost()
                 else:
+                    self.board.print_board()
+                    print(self.p2.name + " won!")
                     self.p2.won()
                     self.p1.lost()
                 return

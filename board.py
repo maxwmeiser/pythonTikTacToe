@@ -57,4 +57,18 @@ class board:
         else:
             return False
 
+    def check_draw(self):
+        i = 0
+        n = 0
+        count = 0
+        while i < 3:
+            while n < 3:
+                if self.game_board[i][n] == "-":
+                    count += 1
+                n += 1
+            n = 0
+            i += 1
+        if count == 0:
+            return True
+        return False
             

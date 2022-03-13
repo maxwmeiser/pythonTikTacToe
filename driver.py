@@ -14,7 +14,7 @@ def print_menu():
     print("1. Play a game")
     print("2. Add new player profile")
     print("3. View player profiles")
-    #print("4. Game Tutorial")
+    print("4. Stat Info")
     print("4. Quit")
 
 #this function creates player profiles
@@ -50,7 +50,7 @@ def list_players(profile_count,profiles, winrate_flag):
     while profile_count > i:
         print(str(i) + ") Name: " + profiles[i].name + " | Symbol: " + profiles[i].symbol, end="")
         if winrate_flag:
-            print(" | Winrate: " + profiles[i].winrate())
+            print(" | Record: " + profiles[i].winrate())
         else:
             print("\n")   
         i += 1 
@@ -70,7 +70,7 @@ player_profile_count += create_player(player_profile_count,player_profiles)
 while PLAY:
     print_menu()
     menu_choice = input("#> ")
-    while not check_in(menu_choice,0,4):
+    while not check_in(menu_choice,0,6):
         menu_choice = input("Invalid input. Try again\n#> ")
     match(int(menu_choice)):
         case 1:
@@ -94,6 +94,8 @@ while PLAY:
             #View profiles
             list_players(player_profile_count, player_profiles, True)
         case 4:
+            print("Wins-Losses-Draws")
+        case 5:
             #quitting
             PLAY = False
             print("Thanks for playing! Here are the stats:")

@@ -90,6 +90,12 @@ class game:
                     self.p2.won()
                     self.p1.lost()
                 return
+            elif self.board.check_draw():
+                self.board.print_board()
+                print("It's a draw!")
+                self.p1.draw()
+                self.p2.draw()
+                return
             rand = not rand
             self.board.print_board()
             self.turn(rand)
@@ -107,7 +113,14 @@ class game:
                     self.p2.won()
                     self.p1.lost()
                 return
+            elif self.board.check_draw():
+                self.board.print_board()
+                print("It's a draw!")
+                self.p1.draw()
+                self.p2.draw()
+                return
             rand = not rand
+
 
     
             

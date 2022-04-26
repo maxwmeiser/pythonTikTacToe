@@ -1,6 +1,10 @@
 Python Practice Project:
 Tic Tak Toe
 
+New goal is to create Tic Tak Toe with the same functionality as the text-based GUI using PyQt5
+
+
+Text-Based GUI:
 Focus: objects and classes
 Make a match history?
 pseudo:

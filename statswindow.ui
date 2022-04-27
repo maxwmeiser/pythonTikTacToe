@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>stats</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_Categories">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -45,6 +45,19 @@
    </property>
    <property name="text">
     <string>Done</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_TestPrint">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>191</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
    </property>
   </widget>
  </widget>

@@ -4,13 +4,13 @@ from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 
-class game_window(QDialog):
-    def __init__(self, p1, p2):
-        #setup
-        super(game_window,self).__init__()
-        loadUi('gamewindow.ui',self)
-        #initialize gameboard representation
-        gameboard = [['-','-','-'],['-','-','-'],['-','-','-']]
+# class game_window(QDialog):
+#     def __init__(self, p1, p2):
+#         #setup
+#         super(game_window,self).__init__()
+#         loadUi('gamewindow.ui',self)
+#         #initialize gameboard representation
+#         gameboard = [['-','-','-'],['-','-','-'],['-','-','-']]
         
 
 #use QTable Widget to display all profiles and profile statistics
@@ -19,7 +19,7 @@ class stat_window(QDialog):
         #setup
         super(stat_window,self).__init__()
         loadUi('statswindow.ui',self)
-
+        self.player_profiles = []
         #functionality
         #done button
         self.pushButton_Done.clicked.connect(self.close_window)
@@ -27,6 +27,19 @@ class stat_window(QDialog):
     #closes window
     def close_window(self):
         self.close()
+
+    #shows window
+    def show_window(self):
+        self.show()
+
+    #info pass test. function will print all info passed in to player_profiles onto a label
+    #function. rework into a list later?
+    def print_label(self):
+        toBePrinted = ""
+        for x in self.player_profiles:
+            toBePrinted += x[0] +" | " + x[1] + " | " + str(x[2]) + " - " + str(x[3]) + " - " + str(x[4]) + "\n"
+        self.label_TestPrint.setText(toBePrinted)
+
 
 
 class main_window(QDialog): 
@@ -37,17 +50,20 @@ class main_window(QDialog):
         #nested list: profile format -> [name, symbol, win, loss, draws]
         self.player_profiles = []
         self.stat_window = stat_window()
-        self.game_window = game_window()
+        #self.game_window = game_window()
         
         #functionality
         #open stats button
-        self.pushButton_Stats.clicked.connect(self.open_stats)
+        self.pushButton_Stats.clicked.connect(self.op_stats)
         #create profile button
         self.pushButton_CreateProfile.clicked.connect(self.create_profile)
 
     #opens stat window and passes player_profiles into it
-    def open_stats(self):
-        
+    def op_stats(self):
+        self.stat_window.player_profiles = self.player_profiles
+        self.stat_window.show_window()
+        self.stat_window.print_label()
+
 
     #clears all plainTextEdit inputs
     def clear_text_inputs(self):

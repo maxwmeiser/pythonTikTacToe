@@ -4,13 +4,33 @@ from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 
-# class game_window(QDialog):
-#     def __init__(self, p1, p2):
-#         #setup
-#         super(game_window,self).__init__()
-#         loadUi('gamewindow.ui',self)
-#         #initialize gameboard representation
-#         gameboard = [['-','-','-'],['-','-','-'],['-','-','-']]
+#stores player profile data: name, symbol, W, L, D
+class player_profile():
+    def __init__(self, name, symbol):
+        self.name = name
+        self.symbol = symbol
+        self.wins = 0
+        self.losses = 0
+        self.draws = 0
+    
+    def won_game(self):
+        self.wins += 1
+    
+    def draw_game(self):
+        self.draws += 1
+
+    def lost_game(self):
+        self.losses += 1
+
+class game_window(QDialog):
+    def __init__(self):
+        #setup
+        super(game_window,self).__init__()
+        loadUi('gamewindow.ui',self)
+        #initialize gameboard representation
+        gameboard = [['-','-','-'],['-','-','-'],['-','-','-']]
+        #initialize players
+
         
 
 #use QTable Widget to display all profiles and profile statistics
@@ -37,10 +57,8 @@ class stat_window(QDialog):
     def print_label(self):
         toBePrinted = ""
         for x in self.player_profiles:
-            toBePrinted += x[0] +" | " + x[1] + " | " + str(x[2]) + " - " + str(x[3]) + " - " + str(x[4]) + "\n"
+            toBePrinted += x.name +" | " + x.symbol + " | " + str(x.wins) + " - " + str(x.losses) + " - " + str(x.draws) + "\n"
         self.label_TestPrint.setText(toBePrinted)
-
-
 
 class main_window(QDialog): 
     def __init__(self):
@@ -79,17 +97,17 @@ class main_window(QDialog):
         
         #check for duplicate symbol and name. if either found, throw error
         for x in self.player_profiles:
-            if x[0] == name_input:
+            if x.name == name_input:
                 #name matches existing profile. display error to label and exit
                 self.label_ProfileError.setText("[ERROR] A profile exists with this name!")
                 return
-            if x[1] == symbol_input:
+            if x.symbol == symbol_input:
                 #symbol matches existing profile. display error to label and exit
                 self.label_ProfileError.setText("[ERROR] A profile exists with this symbol!")
                 return
         
         #name and symbol valid. append to player_profiles, clear inputs, success message
-        new_profile = [name_input, symbol_input, 0, 0, 0]
+        new_profile = player_profile(name_input, symbol_input)
         self.player_profiles.append(new_profile)
         self.label_ProfileError.setText(name_input + "'s profile has been created!")
         self.clear_text_inputs()

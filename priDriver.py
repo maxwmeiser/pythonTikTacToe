@@ -4,6 +4,12 @@ from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 
+#TODO:
+#Program breaks when blank input for symbol 
+#Dont allow blank name profile 
+#
+#
+
 #stores player profile data: name, symbol, W, L, D
 class player_profile():
     def __init__(self, name, symbol):
@@ -30,6 +36,7 @@ class game_window(QDialog):
         #initialize gameboard representation
         gameboard = [['-','-','-'],['-','-','-'],['-','-','-']]
         #initialize players
+        #self.p1 = 
 
         
 
@@ -75,6 +82,8 @@ class main_window(QDialog):
         self.pushButton_Stats.clicked.connect(self.op_stats)
         #create profile button
         self.pushButton_CreateProfile.clicked.connect(self.create_profile)
+        #play game button
+        self.pushButton_Play.clicked.connect(self.play_game)
 
     #opens stat window and passes player_profiles into it
     def op_stats(self):
@@ -82,6 +91,23 @@ class main_window(QDialog):
         self.stat_window.show_window()
         self.stat_window.print_label()
 
+    #opens the game window and goes through a game of tictaktoe
+    def play_game(self):
+        #check that two users are selected
+        if self.comboBox_Player1.currentText() == "":
+            self.label_PlayError.setText("[ERROR] Create 2 profiles first...")
+            return
+        #check that two different users are selected in combo boxes 
+        if self.comboBox_Player1.currentText() == self.comboBox_Player2.currentText():
+            if len(self.player_profiles) == 1:
+                self.label_PlayError.setText("[ERROR] Make another profile")
+                return
+            self.label_PlayError.setText("[ERROR] No playing with urself")
+            return
+
+        self.label_PlayError.clear()
+        #users are valid. pass player_profiles into game window and run game
+        
 
     #clears all plainTextEdit inputs
     def clear_text_inputs(self):
@@ -111,6 +137,10 @@ class main_window(QDialog):
         self.player_profiles.append(new_profile)
         self.label_ProfileError.setText(name_input + "'s profile has been created!")
         self.clear_text_inputs()
+        
+        #add created profile as an option in both comboBoxes
+        self.comboBox_Player1.addItem(name_input)
+        self.comboBox_Player2.addItem(name_input)
 
 #start and show app
 app = QApplication(sys.argv)

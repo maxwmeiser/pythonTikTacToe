@@ -190,7 +190,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Profile Error Label</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

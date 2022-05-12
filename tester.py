@@ -1,11 +1,26 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QListWidget, QListWidgetItem
 
-makingTeses = [["s","z",5,4],["a","a",2,2],["e","e",7,67]]
 
-building = ""
-for x in makingTeses:
- building 
+# my_dict = {}
+# nums = [1,2,3,1]
+# for x in nums:
+#     try:
+#         my_dict[(str(x))]
+#     except:
+#         my_dict[str(x)] = x
+        
+# print('nodupe')
+                
+
+makingTeses = [["s","z"],["a","b"],["e","c"]]
+
+print(makingTeses[0][0])
+print(makingTeses[0][1])
+
+# building = ""
+# for x in makingTeses:
+#  building 
 
 
 # class list_test(QApplication):

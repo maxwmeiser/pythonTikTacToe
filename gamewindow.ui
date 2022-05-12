@@ -114,6 +114,12 @@
    <property name="text">
     <string/>
    </property>
+   <property name="iconSize">
+    <size>
+     <width>25</width>
+     <height>25</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton_r2c1">
    <property name="geometry">
@@ -240,7 +246,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_r1c2_2">
+  <widget class="QLabel" name="label_r1c1">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -261,7 +267,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_r1c2_3">
+  <widget class="QLabel" name="label_r1c3">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -282,7 +288,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_r1c2_4">
+  <widget class="QLabel" name="label_r2c3">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -303,7 +309,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_r1c2_5">
+  <widget class="QLabel" name="label_r2c2">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -324,7 +330,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_r1c2_6">
+  <widget class="QLabel" name="label_r2c1">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -345,7 +351,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_r1c2_7">
+  <widget class="QLabel" name="label_r3c1">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -366,7 +372,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_r1c2_8">
+  <widget class="QLabel" name="label_r3c2">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -387,7 +393,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_r1c2_9">
+  <widget class="QLabel" name="label_r3c3">
    <property name="geometry">
     <rect>
      <x>160</x>
